@@ -14,15 +14,15 @@ export interface SaveFileOptions {
 export class SaveFile implements SaveFileUseCase {
     constructor() { }
 
-    public execute({ fileContent, destination = 'outputs', filename = 'table.txt' }: SaveFileOptions): boolean {
+    public execute({ fileContent, destination = 'outputs', filename = 'table' }: SaveFileOptions): boolean {
 
         try {
             fs.mkdirSync(destination, { recursive: true });
-            fs.writeFileSync(`${destination}/${filename}`, fileContent);
+            fs.writeFileSync(`${destination}/${filename}.txt`, fileContent);
             return true;
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             return false;
         }
     };
